@@ -27,7 +27,7 @@ body {
     padding: 20px 20px 6px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.521);
     border-radius: 5px;
-    backdrop-filter: blur(5px);
+    /*backdrop-filter: blur(5px);*/
 }
 .card::before {
     content: "\2730";
@@ -129,7 +129,7 @@ label {
     border-radius: 5px;
     transition: 0.2s;
     /* ne pas permettre à un user de selectionner le text d'un button */
-    user-select: none;
+    /*user-select: none;*/
 }
 /* animation sur le 1er label rencontré une fois survolé*/
 label:first-of-type:hover {
