@@ -1,0 +1,285 @@
+:root {
+    /* initialisation des color */
+    --color1: #ede4d0;
+    --color2: pink;
+    --color3: #393b4b;
+    --color4: rgb(18, 19, 19);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: url(./assets/fulmine.jpg) fixed center/cover;
+    height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--color1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.card {
+    background: rgba(0, 0, 0, 0.587);
+    width: calc(100% - 50px);
+    padding: 20px 20px 6px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.521);
+    border-radius: 5px;
+    backdrop-filter: blur(5px);
+}
+.card::before {
+    content: "\2730";
+    position: absolute;
+    top: 14px;
+    right: 20px;
+    font-size: 2.4rem;
+}
+/**** width en % et heigth en px ***/
+h1 {
+    margin-bottom: 24px;
+    position: relative;
+}
+/* pour faire de la bar */
+h1::after {
+    content: "";
+    position: absolute;
+    background: var(--color2);
+    height: 1px;
+    width: 100%;
+    bottom: -14px;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    animation: h1anim 6s ease-in-out forwards; /* le 'ease-in-out' permet à l'animation de commencer du milieur et d'alller dans les deux sens, le forwards: permet à l'animtion de rester à la fin*/
+    /*animation par droite ou par gauche*/
+    transform-origin: center /*right left*/;
+}
+/* animation de la bar  */
+@keyframes h1anim {
+    100% {
+        transform: translateX(-50%) scaleX(1);
+    }
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: 20% 80%;
+}
+.polygon-container {
+    /* creation des shadow */
+    filter: drop-shadow(-1px 6px 3px var(--color2));
+    /* mettre le parent en grid */
+    place-self: center left;
+}
+.polygon {
+      clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+      background: linear-gradient(135deg, var(--color2) 0%, var(--color1) 100%);
+      height: 100px;
+      width: 100px;
+}
+.polygon::after {
+    content: "Un texte";
+    position: absolute;
+    color: var(--color2);
+    background: var(--color4);
+    top: 50px;
+    left: 50px;
+    transform: translate(-50%, -50%) rotate(344deg);
+    width: 90px;
+    padding: 4px;
+    text-align: center;
+}
+p {
+    /* pour faire des interlines */
+   line-height: 26px; 
+   margin: 20px 0;
+   /* reduire la taille d'un texte ainsi que le nbre de line */
+   display: -webkit-box;
+   -webkit-box-orient: vertical;
+   -webkit-line-clamp: 4;
+   overflow: hidden;
+   text-align: justify;
+}
+p::selection {
+    background: var(--color2);
+    color: var(--color3);
+}
+.checkbox-container {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0 30px;
+    perspective: 30px; /*animation 3d*/
+}
+input[type="checkbox"] {
+    display: none;
+}
+/* si un checkebox est checké alors dissimile le checkebox et tous les labels qui suivent */
+input[type="checkbox"]:checked  + label { 
+    background: var(--color2); 
+    color: var(--color3);
+    /* scale(): permet de faire remonter un peu le button à la surface */
+    transform: scale(1.1);
+    filter: brightness(120%);
+}
+label {
+    cursor: pointer;
+    border: 1px solid var(--color1);
+    background: var(--color3);
+    padding: 10px;
+    border-radius: 5px;
+    transition: 0.2s;
+    /* ne pas permettre à un user de selectionner le text d'un button */
+    user-select: none;
+}
+/* animation sur le 1er label rencontré une fois survolé*/
+label:first-of-type:hover {
+    animation: label1 1s infinite  linear /*alternate*/;/* pour que l'animation se joue à l'infinie et de façon lineare */
+}
+@keyframes label1 {
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+/* animation 3d sur le 4e label rencontré une fois survolé*/
+label:nth-child(4):hover {
+    animation: label2 3s infinite linear;
+}
+/* ne poas oublier la perspective sur le parent */
+@keyframes label2 {
+    33% {
+        transform: translateZ(30px);
+    }
+    66% {
+        transform: translateZ(-40px);
+    }
+    100% {
+        transform: translateZ(0);
+    }
+}
+.e-mail {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.e-mail input {
+    padding: 10px;
+    border-radius: 5px;
+    outline: none;
+    border: 3px solid transparent;
+    transition: 0.3s;
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--color1);
+    min-width: 180px;
+    width: 35%;
+    max-width: 300px;
+}
+/* les focus: une fois que le button est cliqué que cela se trnsforme */
+input[type="text"]:focus {
+    background: transparent;
+    border: 3px solid  var(--color2);
+    border-radius: 150px;
+}
+input[type="text"]::placeholder {
+    color: var(--color2);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+button {
+    cursor: pointer;
+    background: var(--color2);
+    border: none;
+    font-size: 1.3rem;
+    padding: 10px 20px;
+    border-radius: 150px;
+    margin: 0 auto;
+    display: block;
+    transform: 0.1s;
+}
+button:hover {
+    /* pour l'espacement des lettres du button */
+    letter-spacing: 3px;
+   
+}
+button:active {
+    transform: scale(1.2);
+    /* background: blue; */
+}
+button:hover + a, a:hover {
+    opacity: 1;
+    /* letter-spacing: 3px; */
+    transform: translateY(0); 
+}
+a {
+    color:  var(--color2);
+    text-align: center;
+    display: block;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 0.3s;
+}
+a:visited {
+    color:  var(--color1);
+}
+/* animation sur l'image qui fera le tour de card*/
+img {
+    height: 40px;
+    position: absolute;
+    filter: drop-shadow(0px 6px 3px rgb(255, 255, 0, 0.6));
+    /*z-index pour mettre les elements en avant(+) et en arrière(-)*/
+    z-index: -1;
+    animation: samsung 60s infinite linear;
+}
+@keyframes samsung {
+    0% {
+        top: 2%;
+        left: 2%;
+        transform: rotate(90deg);
+    }   
+    10% {
+        top: 2%;
+        left: 2%;
+        transform: rotate();
+    }   
+    20% {
+        top: 2%;
+        left: 2%;
+        transform: rotate();
+    }   
+    40% {
+        top: 2%;
+        left: 2%;
+        transform: rotate();
+    }   
+    50% {
+        top: 2%;
+        left: 2%;
+        transform: rotate();
+    }   
+    60% {
+        top: 2%;
+        left: 2%;
+        transform: rotate();
+    }   
+    70% {
+        top: 2%;
+        left: 2%;
+        transform: rotate();
+    }   
+    80% {
+        top: 2%;
+        left: 2%;
+        transform: rotate();
+    }   
+    90% {
+        top: 2%;
+        left: 2%;
+        transform: rotate();
+    }   
+    100% {
+        top: 2%;
+        left: 2%;
+        transform: rotate();
+    }   
+}

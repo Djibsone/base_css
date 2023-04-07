@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cours CSS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <head>
+        <h1>Les bases de css</h1>
+    </head>
+
+    <main>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas quaerat voluptate ipsum magni eveniet inventore quis atque rerum pariatur eligendi natus earum iste, accusantium sunt omnis animi impedit minus perspiciatis.</p>
+        <div class="position">
+            <h2>Positionnemet</h2>
+            <span>relative</span>
+            <span id="circle">absolute</span>
+            <span id="rect">absolute</span>
+        </div>
+
+        <div class="flexbox">
+            <h2>Flexbox</h2>
+            <ul>
+                <li>
+                    <a href="">http_build_query</a>
+                </li>
+                <li>
+                    <a href="">http_build_query</a>
+                </li>
+                <li>
+                    <a href="">http_build_query</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="grid">
+            <h2>Grid</h2>
+            <div class="grid-container">
+                <div class="img">
+                    <img src="./assets/panier.jpg" height="200" alt="panier">
+                </div>
+                <form action="">
+                    <input type="text" id="surname" placeholder="Nom">
+                    <input type="text" id="firstname" placeholder="Prénom">
+                    <textarea cols="30" rows="30" placeholder="Ici votre message"></textarea>
+                    <input type="submit" value="valider">
+                </form>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
